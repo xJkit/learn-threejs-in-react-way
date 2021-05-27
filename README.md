@@ -13,4 +13,4 @@
   creating everything in <b>declarative, more functional, and component-based objects!</b> That is what React looks like.
 
 
-  Special thanks to the three.js react renderer <a href="https://github.com/pmndrs/react-three-fiber" target="_blank">@react-three/fiber</a> which makes everything happen in React world.
+  Special thanks to the three.js react renderer <a href="https://github.com/pmndrs/react-three-fiber" target="_blank">@react-three/fiber</a> which makes web happen in React world.

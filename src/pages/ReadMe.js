@@ -41,7 +41,7 @@ export default function ReadMe() {
           >
             react-three/fiber
           </Link>{' '}
-          which makes everything happen in React world.
+          which makes 3d happen in React world.
         </Text>
       </VStack>
     </Box>
