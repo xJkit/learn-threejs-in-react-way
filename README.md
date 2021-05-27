@@ -1,8 +1,10 @@
-## Learn Three.js in REACT Way
+# Learn Three.js in REACT Way
 
-  <a href="https://threejs.org/" target="_blank" color="blue.500">
-    Three.js
-  </a> is an awesome library that makes the Web 3D development a lot easier.
+> <a href="https://threejs.org/" target="_blank" color="blue.500">Three.js</a> is an awesome library that makes the Web 3D development a lot easier.
+
+
+#### Demo: https://xjkit.github.io/learn-threejs-in-react-way/
+
 
 <img src="screenshot.jpg" />
 
