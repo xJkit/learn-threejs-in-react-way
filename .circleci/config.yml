@@ -24,32 +24,9 @@ jobs:
       - run:
           name: Start Building the App
           command: yarn run build
-  deploy:
-    working_directory: ~/tmp
-    docker:
-      - image: cimg/node:15.1
-    steps:
-      - attach_workspace:
-          at: ~/tmp
-      - run:
-          name: Deploy GitHub Page
-          command: yarn run deploy
+
 
 workflows:
   build-for-test:
     jobs:
-      - build:
-        filters:
-          branches:
-            ignore: 
-              - master
-  build-for-deploy:
-    jobs:
-      - build:
-        filters:
-          branches:
-            only:
-              - master
-      - deploy:
-          requires:
-            - build
+      - build
