@@ -5,9 +5,11 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import pkg from '../package.json';
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={`/${pkg.name}`}>
       <ChakraProvider>
         <App />
       </ChakraProvider>
