@@ -16,7 +16,7 @@ const MATERIAL_KIND = {
   standard: 'standard',
 };
 
-export default function Basic() {
+export default function Demo() {
   const {
     backgroundColor,
     isAxesHelper,

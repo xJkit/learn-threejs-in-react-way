@@ -1,20 +1,20 @@
 import { Grid, VStack, Center } from '@chakra-ui/react';
 import { Switch, Route, Link } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Basic from './pages/Basic';
+import ReadMe from './pages/ReadMe';
+import Demo from './pages/Demo';
 import NotFound from './pages/NotFound';
 
 const routes = [
   {
     path: '/',
-    title: 'Home',
-    Component: Home,
+    title: 'Demo',
+    Component: Demo,
   },
   {
-    path: '/basic',
-    title: 'Basic',
-    Component: Basic,
+    path: '/read-me',
+    title: 'Read Me',
+    Component: ReadMe,
   },
 ];
 
