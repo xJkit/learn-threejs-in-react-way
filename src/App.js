@@ -1,5 +1,6 @@
-import { Grid, VStack, Center } from '@chakra-ui/react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Grid, VStack, Center, Icon, Link } from '@chakra-ui/react';
+import { Switch, Route, Link as RouterLink } from 'react-router-dom';
+import { FaGithub } from 'react-icons/fa';
 
 import ReadMe from './pages/ReadMe';
 import Demo from './pages/Demo';
@@ -28,14 +29,34 @@ function Sidebar() {
       color="white"
       fontWeight="bold"
       alignItems="stretch"
+      pos="relative"
     >
       {routes.map((route) => (
-        <Link to={route.path} key={route.title}>
-          <Center w="100%" p={3} _hover={{ bgColor: 'blue.700' }}>
+        <RouterLink to={route.path} key={route.title}>
+          <Center
+            color="blue.100"
+            w="100%"
+            p={3}
+            _hover={{ bgColor: 'blue.700' }}
+          >
             {route.title}
           </Center>
-        </Link>
+        </RouterLink>
       ))}
+      <Center
+        bgColor="blue.100"
+        pos="absolute"
+        lineHeight="60px"
+        bottom={0}
+        left={0}
+        right={0}
+        color="blue.800"
+      >
+        <Link href="https://github.com/xJkit" target="_blank">
+          <Icon as={FaGithub} mr={2} />
+          Jay Chung
+        </Link>
+      </Center>
     </VStack>
   );
 }
