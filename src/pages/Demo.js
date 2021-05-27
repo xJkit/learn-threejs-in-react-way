@@ -299,7 +299,7 @@ export default function Demo() {
   const targetRef = useRef();
   const controlRef = useRef();
   return (
-    <VStack w="100%" h="100%">
+    <VStack w="100%" h="100%" alignItems="flex-start">
       <TitleDescription kind={materialKind} lights={lights} />
       <Box w="100%" flex={1}>
         <Canvas
@@ -399,7 +399,13 @@ function TitleDescription({ kind, lights = [] }) {
   }[kind];
 
   return (
-    <VStack maxW="500px" spacing={3}>
+    <VStack
+      maxWidth="600px"
+      spacing={3}
+      color="blue.800"
+      alignItems="flex-start"
+      fontWeight="bold"
+    >
       <Text fontSize="2xl">{title}</Text>
       <Text>{description}</Text>
       {lights.map(([title, description], idx) => (
