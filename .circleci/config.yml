@@ -35,13 +35,15 @@ workflows:
       - build:
         filters:
           branches:
-            ignore: master
+            ignore: 
+              - master
   build-for-deploy:
     jobs:
       - build:
         filters:
           branches:
-            only: master
+            only:
+              - master
       - deploy:
           requires:
             - build
