@@ -18,7 +18,7 @@ export default function ReadMe() {
           is an awesome library that makes the Web 3D development a lot easier.
         </Text>
         <Text>
-          However, from this{' '}
+          However, when I begin three.js, from this{' '}
           <Link
             color="blue.500"
             href="https://github.com/mrdoob/three.js/blob/master/examples/webgl_animation_cloth.html"
@@ -27,7 +27,7 @@ export default function ReadMe() {
             official documentation code example
           </Link>
           , creating meshes, objects, materials, lights, render loops, and so on
-          in imperaitve way is not really my thing. What my favorite style is
+          in imperative way is not really my thing. What my favorite style is
           creating everything in{' '}
           <b>declarative, more functional, and component-based objects!</b> That
           is what React looks like.
