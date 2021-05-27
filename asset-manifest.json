@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/learn-threejs-in-react-way/static/js/main.8bad9edc.chunk.js",
-    "main.js.map": "/learn-threejs-in-react-way/static/js/main.8bad9edc.chunk.js.map",
+    "main.js": "/learn-threejs-in-react-way/static/js/main.249ddf60.chunk.js",
+    "main.js.map": "/learn-threejs-in-react-way/static/js/main.249ddf60.chunk.js.map",
     "runtime-main.js": "/learn-threejs-in-react-way/static/js/runtime-main.03046b4b.js",
     "runtime-main.js.map": "/learn-threejs-in-react-way/static/js/runtime-main.03046b4b.js.map",
     "static/js/2.7182ead5.chunk.js": "/learn-threejs-in-react-way/static/js/2.7182ead5.chunk.js",
@@ -14,6 +14,6 @@
   "entrypoints": [
     "static/js/runtime-main.03046b4b.js",
     "static/js/2.7182ead5.chunk.js",
-    "static/js/main.8bad9edc.chunk.js"
+    "static/js/main.249ddf60.chunk.js"
   ]
 }
