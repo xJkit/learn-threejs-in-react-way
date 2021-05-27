@@ -18,24 +18,26 @@ const MATERIAL_KIND = {
 
 export default function Basic() {
   const {
-    背景色: backgroundColor,
-    軸線輔助: isAxesHelper,
-    格線輔助: isGridHelper,
-    震盪: oscillation,
-    相機鎖定: followed,
-    材質選擇: materialKind,
-    發光光顏色: emissiveColor,
-    發光強度: emissiveIntensity,
-    打開雙面: isDoubleSide,
-    顏色: color,
-    半透明: isTransparent,
-    旋轉: isRotate,
-    光澤: shininess,
-    光澤色: specular,
-    金屬程度: metalness,
-    粗糙程度: roughness,
-    照明色溫: lightColor,
-    光線強度: lightIntensity,
+    backgroundColor,
+    isAxesHelper,
+    isGridHelper,
+    oscillation,
+    followed,
+    showGround,
+    groundPlaneColor,
+    materialKind,
+    materialColor: color,
+    emissiveColor,
+    emissiveIntensity,
+    isDoubleSide,
+    opacity,
+    isRotate,
+    shininess,
+    specular,
+    metalness,
+    roughness,
+    lightColor,
+    lightIntensity,
     ambient: ambientLight,
     hemisphere: hemisphereLight,
     skyColor,
@@ -54,14 +56,44 @@ export default function Basic() {
     penumbra,
     decay,
   } = useControls({
-    背景色: '#111111',
-    軸線輔助: true,
-    格線輔助: true,
-    震盪: true,
-    旋轉: true,
-    相機鎖定: false,
-    材質參數: folder({
-      材質選擇: {
+    backgroundColor: {
+      label: 'Background',
+      value: '#111111',
+    },
+    isAxesHelper: {
+      label: 'Axes',
+      value: true,
+    },
+    isGridHelper: {
+      label: 'Grid',
+      value: true,
+    },
+    oscillation: {
+      label: 'Oscillation',
+      value: true,
+    },
+    isRotate: {
+      label: 'Rotation',
+      value: true,
+    },
+    followed: {
+      label: 'Camera Lock',
+      value: false,
+    },
+    Ground: folder({
+      showGround: {
+        label: 'Display',
+        value: true,
+      },
+      groundPlaneColor: {
+        label: 'Color',
+        value: '#218550',
+        render: (get) => get('Ground.showGround'),
+      },
+    }),
+    Object: folder({
+      materialKind: {
+        label: 'Kind',
         value: MATERIAL_KIND.standard,
         options: {
           'Basic Material': MATERIAL_KIND.basic,
@@ -74,131 +106,173 @@ export default function Basic() {
           'Standard Material': MATERIAL_KIND.standard,
         },
       },
-      顏色: {
-        label: '顏色!',
+      materialColor: {
+        label: 'Color',
         value: '#aaa123',
-        render: (get) => get('材質參數.材質選擇') !== MATERIAL_KIND.normal,
+        render: (get) => get('Object.materialKind') !== MATERIAL_KIND.normal,
       },
-      半透明: {
-        value: true,
-        render: (get) => {
-          return [
-            MATERIAL_KIND.basic,
-            MATERIAL_KIND.normal,
-            MATERIAL_KIND.depth,
-          ].includes(get('材質參數.材質選擇'));
-        },
+      opacity: {
+        label: 'Opacity',
+        value: 1,
+        min: 0,
+        max: 1,
+        step: 0.1,
       },
-      發光顏色: {
+      emissiveColor: {
+        label: 'Emissive',
         value: '#ffffff',
-        render: (get) => get('材質參數.材質選擇') === MATERIAL_KIND.lambert,
+        render: (get) => get('Object.materialKind') === MATERIAL_KIND.lambert,
       },
-      發光強度: {
+      emissiveIntensity: {
+        label: 'Intensity',
         value: 0,
         min: 0,
         max: 5,
         step: 0.1,
-        render: (get) => get('材質參數.材質選擇') === MATERIAL_KIND.lambert,
+        render: (get) => get('Object.materialKind') === MATERIAL_KIND.lambert,
       },
-      打開雙面: {
+      isDoubleSide: {
+        label: 'DoubleSided',
         value: false,
-        render: (get) => get('材質參數.材質選擇') === MATERIAL_KIND.lambert,
+        render: (get) => get('Object.materialKind') === MATERIAL_KIND.lambert,
       },
-      光澤: {
+      shininess: {
+        label: 'Shininess',
         value: 30,
         min: 0,
         max: 100,
-        render: (get) => get('材質參數.材質選擇') === MATERIAL_KIND.phong,
+        render: (get) => get('Object.materialKind') === MATERIAL_KIND.phong,
       },
-      色澤: {
+      specular: {
+        label: 'Specular',
         value: '#111111',
-        render: (get) => get('材質參數.材質選擇') === MATERIAL_KIND.phong,
+        render: (get) => get('Object.materialKind') === MATERIAL_KIND.phong,
       },
-      金屬程度: {
+      metalness: {
+        label: 'Metalness',
         value: 0.5,
         min: 0,
         max: 1,
         step: 0.1,
-        render: (get) => get('材質參數.材質選擇') === MATERIAL_KIND.standard,
+        render: (get) => get('Object.materialKind') === MATERIAL_KIND.standard,
       },
-      粗糙程度: {
+      roughness: {
+        label: 'Roughness',
         value: 0.5,
         min: 0,
         max: 1,
         step: 0.1,
-        render: (get) => get('材質參數.材質選擇') === MATERIAL_KIND.standard,
+        render: (get) => get('Object.materialKind') === MATERIAL_KIND.standard,
       },
     }),
-    光線參數: folder({
-      照明色溫: {
-        value: '#ee2d2d',
+    Lights: folder({
+      lightColor: {
+        label: 'Color',
+        value: '#ee6b6b',
       },
-      光線強度: { value: 8, min: 0, max: 10 },
-      ambient: false,
-      hemisphere: false,
-      skyColor: {
-        value: '#333888',
-        render: (get) => get('光線參數.hemisphere'),
-      },
-      groundColor: {
-        value: '#aaaaaa',
-        render: (get) => get('光線參數.hemisphere'),
-      },
-      directional: false,
-      directionalHelper: {
-        value: true,
-        render: (get) => get('光線參數.directional'),
-      },
-      directionalPosition: {
-        value: [0, 0], // (x, z)
-        step: 0.5,
-        render: (get) => get('光線參數.directional'),
-      },
-      point: false,
-      pointHelper: {
-        value: true,
-        render: (get) => get('光線參數.point'),
-      },
-      pointPosition: {
-        value: [0, 0], // (x, z)
-        step: 0.5,
-        render: (get) => get('光線參數.point'),
-      },
-      spot: true,
-      spotHelper: {
-        value: true,
-        render: (get) => get('光線參數.spot'),
-      },
-      spotPosition: {
-        value: [0, 0], // (x, z)
-        step: 0.5,
-        render: (get) => get('光線參數.spot'),
-      },
-      spotDistance: {
-        value: 3,
-        render: (get) => get('光線參數.spot'),
-      },
-      spotAngle: {
-        value: (1 / 6) * Math.PI,
-        step: 0.1 * Math.PI,
-        min: 0,
-        max: 2 * Math.PI,
-        render: (get) => get('光線參數.spot'),
-      },
-      penumbra: {
-        value: 0.1,
-        step: 0.1,
-        min: 0,
-        max: 1,
-        render: (get) => get('光線參數.spot'),
-      },
-      decay: {
-        value: 0.1,
-        step: 0.1,
-        min: 0,
-        max: 1,
-        render: (get) => get('光線參數.spot'),
-      },
+      lightIntensity: { label: 'Intensity', value: 8, min: 0, max: 10 },
+      'Ambient Light': folder({
+        ambient: {
+          label: 'Turn On',
+          value: false,
+        },
+      }),
+      'Hemisphere Light': folder({
+        hemisphere: {
+          label: 'Turn On',
+          value: false,
+        },
+        skyColor: {
+          label: 'Sky Color',
+          value: '#333888',
+          render: (get) => get(`Lights.Hemisphere Light.hemisphere`),
+        },
+        groundColor: {
+          label: 'Ground Color',
+          value: '#aaaaaa',
+          render: (get) => get('Lights.Hemisphere Light.hemisphere'),
+        },
+      }),
+      'Directional Light': folder({
+        directional: {
+          label: 'Turn On',
+          value: false,
+        },
+        directionalHelper: {
+          label: 'Helper',
+          value: true,
+          render: (get) => get('Lights.Directional Light.directional'),
+        },
+        directionalPosition: {
+          label: 'Position',
+          value: [0, 0], // (x, z)
+          step: 0.5,
+          render: (get) => get('Lights.Directional Light.directional'),
+        },
+      }),
+      'Point Line': folder({
+        point: {
+          label: 'Turn On',
+          value: false,
+        },
+        pointHelper: {
+          label: 'Helper',
+          value: true,
+          render: (get) => get('Lights.Point Line.point'),
+        },
+        pointPosition: {
+          label: 'Position',
+          value: [0, 0], // (x, z)
+          step: 0.5,
+          render: (get) => get('Lights.Point Line.point'),
+        },
+      }),
+      'Spot Light': folder({
+        spot: {
+          label: 'Turn On',
+          value: true,
+        },
+        spotHelper: {
+          label: 'Helper',
+          value: true,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        spotPosition: {
+          label: 'Position',
+          value: [0, 0], // (x, z)
+          step: 0.5,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        spotDistance: {
+          label: 'Distance',
+          value: 3,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        spotAngle: {
+          label: 'Angle',
+          value: (1 / 6) * Math.PI,
+          step: 0.1 * Math.PI,
+          min: 0,
+          max: 2 * Math.PI,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        penumbra: {
+          label: 'Penumbra',
+          value: 0.1,
+          step: 0.1,
+          min: 0,
+          max: 1,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        decay: {
+          label: 'Decay',
+          value: 0.1,
+          step: 0.1,
+          min: 0,
+          max: 1,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+      }),
     }),
   });
   const lights = useMemo(() => {
@@ -249,7 +323,7 @@ export default function Basic() {
             color={color}
             emissiveColor={emissiveColor}
             emissiveIntensity={emissiveIntensity}
-            isTransparent={isTransparent}
+            opacity={opacity}
             isDoubleSide={isDoubleSide}
             isRotate={isRotate}
             shineness={shininess}
@@ -257,7 +331,7 @@ export default function Basic() {
             metalness={metalness}
             roughness={roughness}
           />
-          <Plane />
+          {showGround && <Plane color={groundPlaneColor} />}
           <Lights
             ambientLight={ambientLight}
             hemisphereLight={hemisphereLight}
@@ -435,7 +509,7 @@ function Donut({
   color,
   emissiveColor,
   emissiveIntensity,
-  isTransparent,
+  opacity,
   isDoubleSide,
   isRotate,
   shininess,
@@ -443,7 +517,6 @@ function Donut({
   metalness,
   roughness,
 }) {
-  const opacity = isTransparent ? 0.8 : 1;
   let angle = 0;
   useFrame(() => {
     if (donutRef.current) {
@@ -485,17 +558,17 @@ function Donut({
           <meshBasicMaterial
             color={color}
             opacity={opacity}
-            transparent={isTransparent}
+            transparent={opacity}
           />
         ),
         [MATERIAL_KIND.normal]: (
-          <meshNormalMaterial opacity={opacity} transparent={isTransparent} />
+          <meshNormalMaterial opacity={opacity} transparent={opacity !== 1} />
         ),
         [MATERIAL_KIND.depth]: (
           <meshDepthMaterial
             color={color}
             opacity={opacity}
-            transparent={isTransparent}
+            transparent={opacity}
           />
         ),
         [MATERIAL_KIND.lambert]: (
@@ -504,6 +577,8 @@ function Donut({
             emissive={emissiveColor}
             emissiveIntensity={emissiveIntensity}
             side={isDoubleSide ? THREE.DoubleSide : THREE.FrontSide}
+            opacity={opacity}
+            transparent={opacity !== 1}
           />
         ),
         [MATERIAL_KIND.phong]: (
@@ -514,6 +589,8 @@ function Donut({
             side={isDoubleSide ? THREE.DoubleSide : THREE.FrontSide}
             shininess={shininess} // default 30
             specular={specular}
+            opacity={opacity}
+            transparent={opacity !== 1}
           />
         ),
         [MATERIAL_KIND.standard]: (
@@ -524,6 +601,8 @@ function Donut({
             side={isDoubleSide ? THREE.DoubleSide : THREE.FrontSide}
             metalness={metalness}
             roughness={roughness}
+            opacity={opacity}
+            transparent={opacity !== 1}
           />
         ),
       }[kind] || null}
@@ -531,11 +610,11 @@ function Donut({
   );
 }
 
-function Plane() {
+function Plane({ color }) {
   return (
     <mesh rotation-x={(-90 / 180) * Math.PI}>
       <planeGeometry args={[2, 2]} />
-      <meshStandardMaterial color="blue" metalness={0.5} roughness={0} />
+      <meshStandardMaterial color={color} metalness={0.6} roughness={0} />
     </mesh>
   );
 }
