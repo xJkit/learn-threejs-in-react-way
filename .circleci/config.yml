@@ -2,9 +2,12 @@ version: 2.1
 
 jobs:
   build:
+    working_directory: ~/tmp
     docker:
       - image: cimg/node:15.1
     steps:
+      - attach_workspace:
+          at: ~/tmp
       - checkout
       - restore_cache:
           # See the configuration reference documentation for more details on using restore_cache and save_cache steps
@@ -22,9 +25,12 @@ jobs:
           name: Start Building the App
           command: yarn run build
   deploy:
+    working_directory: ~/tmp
     docker:
       - image: cimg/node:15.1
     steps:
+      - attach_workspace:
+          at: ~/tmp
       - run:
           name: Deploy GitHub Page
           command: yarn run deploy
