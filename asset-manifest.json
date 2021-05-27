@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/learn-threejs-in-react-way/static/js/main.150c659e.chunk.js",
+    "main.js.map": "/learn-threejs-in-react-way/static/js/main.150c659e.chunk.js.map",
+    "runtime-main.js": "/learn-threejs-in-react-way/static/js/runtime-main.18e8370c.js",
+    "runtime-main.js.map": "/learn-threejs-in-react-way/static/js/runtime-main.18e8370c.js.map",
+    "static/js/2.1b7e9249.chunk.js": "/learn-threejs-in-react-way/static/js/2.1b7e9249.chunk.js",
+    "static/js/2.1b7e9249.chunk.js.map": "/learn-threejs-in-react-way/static/js/2.1b7e9249.chunk.js.map",
+    "static/js/3.cd09342a.chunk.js": "/learn-threejs-in-react-way/static/js/3.cd09342a.chunk.js",
+    "static/js/3.cd09342a.chunk.js.map": "/learn-threejs-in-react-way/static/js/3.cd09342a.chunk.js.map",
+    "index.html": "/learn-threejs-in-react-way/index.html",
+    "static/js/2.1b7e9249.chunk.js.LICENSE.txt": "/learn-threejs-in-react-way/static/js/2.1b7e9249.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.18e8370c.js",
+    "static/js/2.1b7e9249.chunk.js",
+    "static/js/main.150c659e.chunk.js"
+  ]
+}
