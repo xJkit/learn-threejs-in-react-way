@@ -171,6 +171,52 @@ export default function Basic() {
         value: '#ee6b6b',
       },
       lightIntensity: { label: 'Intensity', value: 8, min: 0, max: 10 },
+      'Spot Light': folder({
+        spot: {
+          label: 'Turn On',
+          value: true,
+        },
+        spotHelper: {
+          label: 'Helper',
+          value: true,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        spotPosition: {
+          label: 'Position',
+          value: [0, 0], // (x, z)
+          step: 0.5,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        spotDistance: {
+          label: 'Distance',
+          value: 3,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        spotAngle: {
+          label: 'Angle',
+          value: (1 / 6) * Math.PI,
+          step: 0.1 * Math.PI,
+          min: 0,
+          max: 2 * Math.PI,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        penumbra: {
+          label: 'Penumbra',
+          value: 0.1,
+          step: 0.1,
+          min: 0,
+          max: 1,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+        decay: {
+          label: 'Decay',
+          value: 0.1,
+          step: 0.1,
+          min: 0,
+          max: 1,
+          render: (get) => get('Lights.Spot Light.spot'),
+        },
+      }),
       'Ambient Light': folder({
         ambient: {
           label: 'Turn On',
@@ -225,52 +271,6 @@ export default function Basic() {
           value: [0, 0], // (x, z)
           step: 0.5,
           render: (get) => get('Lights.Point Line.point'),
-        },
-      }),
-      'Spot Light': folder({
-        spot: {
-          label: 'Turn On',
-          value: true,
-        },
-        spotHelper: {
-          label: 'Helper',
-          value: true,
-          render: (get) => get('Lights.Spot Light.spot'),
-        },
-        spotPosition: {
-          label: 'Position',
-          value: [0, 0], // (x, z)
-          step: 0.5,
-          render: (get) => get('Lights.Spot Light.spot'),
-        },
-        spotDistance: {
-          label: 'Distance',
-          value: 3,
-          render: (get) => get('Lights.Spot Light.spot'),
-        },
-        spotAngle: {
-          label: 'Angle',
-          value: (1 / 6) * Math.PI,
-          step: 0.1 * Math.PI,
-          min: 0,
-          max: 2 * Math.PI,
-          render: (get) => get('Lights.Spot Light.spot'),
-        },
-        penumbra: {
-          label: 'Penumbra',
-          value: 0.1,
-          step: 0.1,
-          min: 0,
-          max: 1,
-          render: (get) => get('Lights.Spot Light.spot'),
-        },
-        decay: {
-          label: 'Decay',
-          value: 0.1,
-          step: 0.1,
-          min: 0,
-          max: 1,
-          render: (get) => get('Lights.Spot Light.spot'),
         },
       }),
     }),
