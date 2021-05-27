@@ -22,8 +22,8 @@ jobs:
           name: Start Building the App
           command: yarn run build
   deploy:
-    machine:
-      enabled: true
+    docker:
+      - image: cimg/node:15.1
     steps:
       - run:
           name: Deploy GitHub Page
