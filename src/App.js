@@ -81,7 +81,7 @@ function Main(props) {
 
 function App() {
   return (
-    <Grid h="100vh" w="100vw" templateColumns="170px 1fr">
+    <Grid h="100vh" w="100vw" templateColumns="140px 1fr">
       <Sidebar />
       <Main />
     </Grid>
