@@ -2,6 +2,11 @@
   "name": "learn-threejs-in-react-way",
   "version": "0.1.0",
   "homepage": "https://xjkit.github.io/learn-threejs-in-react-way",
+  "author": {
+    "name": "Jay Chung",
+    "email": "xjkit54780@gmail.com",
+    "url": "https://github.com/xJkit"
+  },
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^1.6.2",

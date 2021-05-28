@@ -27,8 +27,8 @@ export default function ReadMe() {
             official documentation code example
           </Link>
           , creating meshes, objects, materials, lights, render loops, and so on
-          in imperative way is not really my thing. What my favorite style is
-          creating everything in{' '}
+          in imperative way is not really my thing. Why not just create
+          everything in{' '}
           <b>declarative, more functional, and component-based objects!</b> That
           is what React looks like.
         </Text>
@@ -41,7 +41,18 @@ export default function ReadMe() {
           >
             react-three/fiber
           </Link>{' '}
-          which makes 3d happen in React world.
+          which makes web 3d happen in React world.
+        </Text>
+        <Text>
+          It is welcome to check my{' '}
+          <Link
+            color="blue.500"
+            href="https://github.com/xJkit/learn-threejs-in-react-way"
+            target="_blank"
+          >
+            source code.
+          </Link>{' '}
+          Any suggestion and PR is welcome!
         </Text>
       </VStack>
     </Box>
