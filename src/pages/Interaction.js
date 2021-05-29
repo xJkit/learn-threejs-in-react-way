@@ -25,6 +25,7 @@ export default function Interaction() {
 }
 
 function Ball() {
+  const radius = 1;
   const ballRef = useRef();
   const posX = useRef(0);
   const posZ = useRef(0);
@@ -34,6 +35,7 @@ function Ball() {
       ballRef.current.position.x = parseFloat(
         (ballRef.current.position.x + delta.current).toFixed(2)
       );
+      ballRef.current.rotation.x += delta.current;
       state.camera.position.x = parseFloat(
         (state.camera.position.x + delta.current).toFixed(2)
       );
@@ -42,6 +44,7 @@ function Ball() {
       ballRef.current.position.z = parseFloat(
         (ballRef.current.position.z + delta.current).toFixed(2)
       );
+      ballRef.current.rotation.z += delta.current;
       state.camera.position.z = parseFloat(
         (state.camera.position.z + delta.current).toFixed(2)
       );
@@ -78,7 +81,7 @@ function Ball() {
 
   return (
     <mesh ref={ballRef} position={[posX.current, 1, posZ.current]}>
-      <sphereGeometry args={[1, 30, 30]} />
+      <sphereGeometry args={[radius, 30, 30]} />
       <meshStandardMaterial color="red" />
     </mesh>
   );
