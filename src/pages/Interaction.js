@@ -34,10 +34,16 @@ function Ball() {
       ballRef.current.position.x = parseFloat(
         (ballRef.current.position.x + delta.current).toFixed(2)
       );
+      state.camera.position.x = parseFloat(
+        (state.camera.position.x + delta.current).toFixed(2)
+      );
     }
     if (ballRef.current.position.z !== posZ.current) {
       ballRef.current.position.z = parseFloat(
         (ballRef.current.position.z + delta.current).toFixed(2)
+      );
+      state.camera.position.z = parseFloat(
+        (state.camera.position.z + delta.current).toFixed(2)
       );
     }
   });
