@@ -5,6 +5,7 @@ import { FaGithub } from 'react-icons/fa';
 import ReadMe from './pages/ReadMe';
 import Demo from './pages/Demo';
 import Interaction from './pages/Interaction';
+import Text from './pages/Text';
 import NotFound from './pages/NotFound';
 
 const routes = [
@@ -22,6 +23,11 @@ const routes = [
     path: '/interaction',
     title: 'Interaction',
     Component: Interaction,
+  },
+  {
+    path: '/text',
+    title: 'Text',
+    Component: Text,
   },
 ];
 
