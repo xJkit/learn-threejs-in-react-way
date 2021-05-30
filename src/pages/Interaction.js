@@ -1,26 +1,31 @@
 import { useRef, useEffect, useCallback } from 'react';
 import * as THREE from 'three';
-import { Box } from '@chakra-ui/react';
+import { Box, VStack, Text } from '@chakra-ui/react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useHelper } from '@react-three/drei';
 
 export default function Interaction() {
   return (
-    <Box w="100%" h="100%">
-      <Canvas
-        camera={{
-          position: [8, 8, -4],
-        }}
-        onCreated={(state) => {
-          state.scene.background = new THREE.Color(0xaaaaaa);
-        }}
-      >
-        <gridHelper />
-        <Ball />
-        <Light />
-        {/* <OrbitControls /> */}
-      </Canvas>
-    </Box>
+    <VStack w="100%" h="100%" alignItems="stretch">
+      <Text fontSize="4xl" fontWeight="bold">
+        Use Arrow Key to Move the Object
+      </Text>
+      <Box flex={1}>
+        <Canvas
+          camera={{
+            position: [8, 8, -4],
+          }}
+          onCreated={(state) => {
+            state.scene.background = new THREE.Color(0xaaaaaa);
+          }}
+        >
+          <gridHelper />
+          <Ball />
+          <Light />
+          {/* <OrbitControls /> */}
+        </Canvas>
+      </Box>
+    </VStack>
   );
 }
 
