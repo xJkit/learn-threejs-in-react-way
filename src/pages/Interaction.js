@@ -22,7 +22,6 @@ export default function Interaction() {
           <gridHelper />
           <Ball />
           <Light />
-          {/* <OrbitControls /> */}
         </Canvas>
       </Box>
     </VStack>
