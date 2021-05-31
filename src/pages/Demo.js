@@ -3,6 +3,8 @@ import { Box, Text, VStack } from '@chakra-ui/react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, useHelper, useTexture } from '@react-three/drei';
 import { useControls, folder } from 'leva';
+
+import metalTextures from '../assets/metal-textures.jpg';
 import * as THREE from 'three';
 
 const MATERIAL_KIND = {
@@ -537,7 +539,7 @@ function Donut({
       angle += 0.01;
     }
   });
-  const texture = useTexture('metal-textures.jpg');
+  const texture = useTexture(metalTextures);
   if ([MATERIAL_KIND.line].includes(kind)) {
     return (
       <line ref={donutRef} rotation-x={(-30 / 180) * Math.PI}>

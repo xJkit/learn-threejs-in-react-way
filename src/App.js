@@ -6,6 +6,7 @@ import ReadMe from './pages/ReadMe';
 import Demo from './pages/Demo';
 import Interaction from './pages/Interaction';
 import Text from './pages/Text';
+import Panorama from './pages/Panorama';
 import NotFound from './pages/NotFound';
 
 const routes = [
@@ -28,6 +29,11 @@ const routes = [
     path: '/text',
     title: 'Text',
     Component: Text,
+  },
+  {
+    path: '/panorama',
+    title: 'Panorama',
+    Component: Panorama,
   },
 ];
 
