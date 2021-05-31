@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/learn-threejs-in-react-way/static/js/main.39a4bbe4.chunk.js",
-    "main.js.map": "/learn-threejs-in-react-way/static/js/main.39a4bbe4.chunk.js.map",
+    "main.js": "/learn-threejs-in-react-way/static/js/main.7a5d7826.chunk.js",
+    "main.js.map": "/learn-threejs-in-react-way/static/js/main.7a5d7826.chunk.js.map",
     "runtime-main.js": "/learn-threejs-in-react-way/static/js/runtime-main.ac1661f4.js",
     "runtime-main.js.map": "/learn-threejs-in-react-way/static/js/runtime-main.ac1661f4.js.map",
     "static/js/2.9c9abeab.chunk.js": "/learn-threejs-in-react-way/static/js/2.9c9abeab.chunk.js",
@@ -10,11 +10,12 @@
     "static/js/3.38b78a0c.chunk.js.map": "/learn-threejs-in-react-way/static/js/3.38b78a0c.chunk.js.map",
     "index.html": "/learn-threejs-in-react-way/index.html",
     "static/js/2.9c9abeab.chunk.js.LICENSE.txt": "/learn-threejs-in-react-way/static/js/2.9c9abeab.chunk.js.LICENSE.txt",
-    "static/media/metal-textures.dfd812cf.jpg": "/learn-threejs-in-react-way/static/media/metal-textures.dfd812cf.jpg"
+    "static/media/metal-textures.dfd812cf.jpg": "/learn-threejs-in-react-way/static/media/metal-textures.dfd812cf.jpg",
+    "static/media/panorama-city.4e6c782d.jpg": "/learn-threejs-in-react-way/static/media/panorama-city.4e6c782d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.ac1661f4.js",
     "static/js/2.9c9abeab.chunk.js",
-    "static/js/main.39a4bbe4.chunk.js"
+    "static/js/main.7a5d7826.chunk.js"
   ]
 }
