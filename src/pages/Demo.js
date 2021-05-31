@@ -1,7 +1,7 @@
-import { useRef, useMemo, Fragment, useCallback } from 'react';
+import { useRef, useMemo, Fragment, useCallback, Suspense } from 'react';
 import { Box, Text, VStack } from '@chakra-ui/react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, useHelper } from '@react-three/drei';
+import { OrbitControls, useHelper, useTexture } from '@react-three/drei';
 import { useControls, folder } from 'leva';
 import * as THREE from 'three';
 
@@ -316,21 +316,23 @@ export default function Demo() {
             targetRef={targetRef}
             controlRef={controlRef}
           />
-          <Donut
-            donutRef={targetRef}
-            oscillation={oscillation}
-            kind={materialKind}
-            color={color}
-            emissiveColor={emissiveColor}
-            emissiveIntensity={emissiveIntensity}
-            opacity={opacity}
-            isDoubleSide={isDoubleSide}
-            isRotate={isRotate}
-            shineness={shininess}
-            specular={specular}
-            metalness={metalness}
-            roughness={roughness}
-          />
+          <Suspense fallback={null}>
+            <Donut
+              donutRef={targetRef}
+              oscillation={oscillation}
+              kind={materialKind}
+              color={color}
+              emissiveColor={emissiveColor}
+              emissiveIntensity={emissiveIntensity}
+              opacity={opacity}
+              isDoubleSide={isDoubleSide}
+              isRotate={isRotate}
+              shineness={shininess}
+              specular={specular}
+              metalness={metalness}
+              roughness={roughness}
+            />
+          </Suspense>
           {showGround && <Plane color={groundPlaneColor} />}
           <Lights
             ambientLight={ambientLight}
@@ -535,6 +537,7 @@ function Donut({
       angle += 0.01;
     }
   });
+  const texture = useTexture('metal-textures.jpg');
   if ([MATERIAL_KIND.line].includes(kind)) {
     return (
       <line ref={donutRef} rotation-x={(-30 / 180) * Math.PI}>
@@ -565,6 +568,7 @@ function Donut({
             color={color}
             opacity={opacity}
             transparent={opacity}
+            map={texture}
           />
         ),
         [MATERIAL_KIND.normal]: (
@@ -575,6 +579,7 @@ function Donut({
             color={color}
             opacity={opacity}
             transparent={opacity}
+            map={texture}
           />
         ),
         [MATERIAL_KIND.lambert]: (
@@ -585,6 +590,7 @@ function Donut({
             side={isDoubleSide ? THREE.DoubleSide : THREE.FrontSide}
             opacity={opacity}
             transparent={opacity !== 1}
+            map={texture}
           />
         ),
         [MATERIAL_KIND.phong]: (
@@ -597,6 +603,7 @@ function Donut({
             specular={specular}
             opacity={opacity}
             transparent={opacity !== 1}
+            map={texture}
           />
         ),
         [MATERIAL_KIND.standard]: (
@@ -609,6 +616,7 @@ function Donut({
             roughness={roughness}
             opacity={opacity}
             transparent={opacity !== 1}
+            map={texture}
           />
         ),
       }[kind] || null}
