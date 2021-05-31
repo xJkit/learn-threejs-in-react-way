@@ -305,6 +305,7 @@ export default function Demo() {
       <TitleDescription kind={materialKind} lights={lights} />
       <Box w="100%" flex={1}>
         <Canvas
+          shadows
           camera={{
             position: [2, 2, 2],
           }}
@@ -481,6 +482,7 @@ function Lights({
       )}
       {directionalLight && (
         <directionalLight
+          castShadow
           position={[directionalPosition[0], 1.5, directionalPosition[1]]}
           ref={directionalLightRef}
           color={lightColor}
@@ -489,6 +491,7 @@ function Lights({
       )}
       {pointLight && (
         <pointLight
+          castShadow
           ref={pointLightRef}
           color={lightColor}
           position={[pointPosition[0], 0.5, pointPosition[1]]}
@@ -498,6 +501,7 @@ function Lights({
       )}
       {spotLight && (
         <spotLight
+          castShadow
           ref={spotLightRef}
           color={lightColor}
           position={[spotPosition[0], 2, spotPosition[1]]}
@@ -628,9 +632,14 @@ function Donut({
 
 function Plane({ color }) {
   return (
-    <mesh rotation-x={(-90 / 180) * Math.PI}>
+    <mesh receiveShadow rotation-x={(-90 / 180) * Math.PI}>
       <planeGeometry args={[2, 2]} />
-      <meshStandardMaterial color={color} metalness={0.6} roughness={0} />
+      <meshStandardMaterial
+        color={color}
+        metalness={0.6}
+        roughness={0}
+        side={THREE.DoubleSide}
+      />
     </mesh>
   );
 }
